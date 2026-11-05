@@ -48,13 +48,13 @@ window.MMW = {
   // size: x (veliki) / l / m / s ; fp = object-position
   gallery: [
     { src: IMG + "gal-1.jpg", alt: "Uživo na sceni: gitara i vokal", k: "a" },
-    { src: IMG + "g-1.jpg", alt: "Bend ispred ispisanog zida", k: "b" },
+    { src: IMG + "g-1.jpg", alt: "Bend ispred ispisanog zida", k: "b", whole: "3500/2429" },
     { src: IMG + "gal-3.jpg", alt: "Gitarista u svetlima reflektora", k: "c" },
-    { src: IMG + "gal-5.jpg", alt: "Bend sa srpskom zastavom pred festivalskom publikom", k: "d" },
+    { src: IMG + "gal-5.jpg", alt: "Bend sa srpskom zastavom pred festivalskom publikom", k: "d", whole: "1600/915" },
     { src: IMG + "g-4.jpg", alt: "Bas gitara i svetla", k: "e" },
-    { src: IMG + "g-2.jpg", alt: "Bend na krovu, pogled na grad", k: "f" },
+    { src: IMG + "g-2.jpg", alt: "Bend na krovu, pogled na grad", k: "f", whole: "1600/1071" },
     { src: IMG + "gal-2.jpg", alt: "Bubnjar na sceni", k: "g" },
-    { src: IMG + "g-3.jpg", alt: "Bend u prolazu između zgrada", k: "h" },
+    { src: IMG + "g-3.jpg", alt: "Bend u prolazu između zgrada", k: "h", whole: "3500/2319" },
     { src: IMG + "g-5.jpg", alt: "Publika i bend u dimu reflektora", k: "i" },
     { src: IMG + "g-6.jpg", alt: "Nastup u plavom svetlu", k: "j" }
   ],

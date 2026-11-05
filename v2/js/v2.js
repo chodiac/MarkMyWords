@@ -77,8 +77,8 @@
       </button>`).join("");
 
     $("#galGrid").innerHTML = C.gallery.map((g, i) => `
-      <button class="gi gi--${g.k}" type="button" data-i="${i}" data-cursor="VIEW" data-speed="${[0, -50, 40, -20, 60, -30, 30, -40, 20, -10][i % 10]}" aria-label="Otvori fotografiju ${i + 1} od ${C.gallery.length}: ${esc(g.alt)}">
-        ${frame(g.src, "", "px")}<span class="gi__n mono" aria-hidden="true">${pad2(i + 1)}</span>
+      <button class="gi gi--${g.k} ${g.whole ? "gi--whole" : ""}" ${g.whole ? `style="--ar:${g.whole}"` : ""} type="button" data-i="${i}" data-cursor="VIEW" data-speed="${[0, -50, 40, -20, 60, -30, 30, -40, 20, -10][i % 10]}" aria-label="Otvori fotografiju ${i + 1} od ${C.gallery.length}: ${esc(g.alt)}">
+        ${frame(g.src, "", g.whole ? "" : "px")}<span class="gi__n mono" aria-hidden="true">${pad2(i + 1)}</span>
       </button>`).join("");
 
     const mb = $("#mailBtn"); mb.textContent = C.email; mb.classList.toggle("is-ph", isPh(C.email));
@@ -446,7 +446,7 @@
       $$(".gi").forEach(g => {
         const f = $(".frame", g);
         gsap.fromTo(f, { clipPath: "inset(14% 14% 14% 14%)", scale: .9 }, { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: g, start: "top 90%", once: true } });
-        gsap.fromTo($(".inner", f), { yPercent: -7 }, { yPercent: 7, ease: "none", scrollTrigger: { trigger: g, start: "top bottom", end: "bottom top", scrub: true } });
+        if (!g.classList.contains("gi--whole")) gsap.fromTo($(".inner", f), { yPercent: -7 }, { yPercent: 7, ease: "none", scrollTrigger: { trigger: g, start: "top bottom", end: "bottom top", scrub: true } });
         if (desk) gsap.fromTo(g, { y: -g.dataset.speed * 1.2 }, { y: g.dataset.speed * 1.8, ease: "none", scrollTrigger: { trigger: g, start: "top bottom", end: "bottom top", scrub: true } });
       });
 
