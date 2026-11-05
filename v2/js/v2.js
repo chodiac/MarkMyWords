@@ -462,6 +462,32 @@
     });
   }
 
+  /* ---------- glitch logotipa na homepage-u: horizontalni isečci pomereni + crveni duplikat; samo dok je logo veliki ---------- */
+  function logoGlitch() {
+    const w = brand.getBoundingClientRect().width, made = [];
+    const n = 3 + (Math.random() * 3 | 0);
+    for (let i = 0; i < n; i++) {
+      const im = new Image(); im.src = i % 2 ? "../images/web/logo-red.svg" : "../images/web/logo.svg"; im.alt = ""; im.className = "bs bg";
+      const t = Math.random() * 85, h = 3 + Math.random() * 12;
+      im.style.setProperty("--t", t.toFixed(1) + "%"); im.style.setProperty("--b", Math.max(0, 100 - t - h).toFixed(1) + "%");
+      brand.appendChild(im); made.push(im);
+    }
+    gsap.timeline({ onComplete: () => made.forEach(m => m.remove()) })
+      .fromTo(made, { x: () => gsap.utils.random(-.05, .05) * w, opacity: 1 }, { x: () => gsap.utils.random(-.04, .04) * w, duration: .06, stagger: .015 })
+      .to(made, { x: () => gsap.utils.random(-.07, .07) * w, duration: .05 })
+      .to(made, { x: 0, opacity: 0, duration: .07 })
+      .fromTo($(".brand__full"), { x: 0 }, { x: () => gsap.utils.random(-.012, .012) * w, duration: .04, yoyo: true, repeat: 3 }, 0)
+      .set($(".brand__full"), { x: 0 });
+  }
+  function logoGlitchLoop() {
+    if (reduce) return;
+    const tick = () => {
+      if (!document.hidden && !layer && scrollY < vh() * .12) logoGlitch();
+      gsap.delayedCall(gsap.utils.random(3, 5.5), tick);
+    };
+    gsap.delayedCall(1.2, () => { if (scrollY < vh() * .12) logoGlitch(); gsap.delayedCall(gsap.utils.random(3, 5), tick); });
+  }
+
   /* ---------- uvodna špica ---------- */
   function intro() {
     const body = document.body, hb = heroBox();
@@ -473,7 +499,7 @@
     gsap.set("#oFrame", { clipPath: "inset(36% 28% 36% 28%)" }); gsap.set("#oImg", { scale: 1.12 }); gsap.set(".o-shade", { opacity: 1 });
     gsap.set("#navSlot", { opacity: 0 });
     body.classList.remove("is-loading"); body.classList.add("is-locked"); if (lenis) lenis.stop();
-    const tl = gsap.timeline({ onComplete: () => { introDone = true; body.classList.remove("is-locked"); if (lenis) lenis.start(); gsap.set(els, { clearProps: "opacity" }); gsap.set("#navSlot", { clearProps: "opacity" }); gsap.set("#oImg", { clearProps: "transform" }); ScrollTrigger.refresh(); } });
+    const tl = gsap.timeline({ onComplete: () => { introDone = true; body.classList.remove("is-locked"); if (lenis) lenis.start(); gsap.set(els, { clearProps: "opacity" }); gsap.set("#navSlot", { clearProps: "opacity" }); gsap.set("#oImg", { clearProps: "transform" }); ScrollTrigger.refresh(); logoGlitchLoop(); } });
     tl.to("#oFrame", { clipPath: "inset(0% 0% 0% 0%)", duration: 1.6, ease: "expo.inOut" }, .25)
       .to("#oImg", { scale: 1, duration: 2.1, ease: "power3.out" }, .25)
       .to(bslices, { opacity: 1, x: 0, duration: .95, ease: "expo.out", stagger: { each: .09, from: "random" } }, .35)
