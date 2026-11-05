@@ -340,7 +340,7 @@
           .to(".o-cue", { opacity: 0, duration: .08 }, 0)
           .fromTo(oFrame, { clipPath: full }, { clipPath: fin, duration: .36, ease: "power3.inOut" }, .12)
           .fromTo(oInner, { x: 0, y: 0, scale: 1 }, { x: () => -vw() * .17, y: () => -vh() * .08, scale: .56, duration: .36, ease: "power3.inOut" }, .12)
-          .fromTo(".o-ghost", { xPercent: 14, opacity: 0 }, { xPercent: -3, opacity: 1, duration: .75 }, .2)
+          .fromTo(".o-ghost", { xPercent: 14, opacity: 0 }, { xPercent: -3, opacity: .34, duration: .75 }, .2)
           .fromTo(copyTag, { opacity: 0 }, { opacity: 1, duration: .06 }, .44)
           .fromTo(sp.lines, { yPercent: 115 }, { yPercent: 0, stagger: .028, duration: .1, ease: "power2.out" }, .46)
           .fromTo("#oSecond", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: .2, ease: "power3.inOut" }, .58)
