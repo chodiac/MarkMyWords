@@ -35,7 +35,11 @@
   function render() {
     $("#heroGenre").textContent = C.genre;
     $("#year").textContent = new Date().getFullYear();
-    $("#oImg").src = C.img.hero; $("#oAlt").src = C.img.heroAlt; $("#oSecImg").src = C.img.second; $("#stImg").src = C.img.stage;
+    $("#oImg").src = C.img.hero; $("#oAlt").src = C.img.heroAlt; $("#oSecImg").src = C.img.second; $("#oSecFlag").src = C.img.second;
+    { // na hover samo zastava dobija boju: kolorni duplikat isečen poligonom zastave (koordinate u pikselima slike 1600x915; okvir je 4:3, cover)
+      const P = [[535, 458], [640, 462], [725, 490], [960, 495], [1235, 505], [1250, 540], [1248, 700], [1215, 860], [1160, 915], [430, 915], [470, 800], [485, 640], [505, 560]], W = 1600, H = 915, vis = (4 / 3) / (W / H), off = (1 - vis) / 2;
+      $("#oSecFlag").style.clipPath = "polygon(" + P.map(([x, y]) => (((x / W - off) / vis) * 100).toFixed(2) + "% " + ((y / H) * 100).toFixed(2) + "%").join(",") + ")";
+    } $("#stImg").src = C.img.stage;
     $("#oText").textContent = C.bio.slice(0, 4).join(" ");
     $("#stText").textContent = C.bio[4];
     $("#stTitle").setAttribute("aria-label", C.stageTitle.join(" "));
