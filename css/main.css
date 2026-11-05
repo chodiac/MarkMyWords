@@ -349,4 +349,4 @@ html.reduce .m__name{margin-top:-.4em}
 html.reduce .m__role{position:static;padding:10px var(--pad) 0}
 html.reduce .band__big .w{opacity:1}
 html.reduce .menu,html.reduce .layer,html.reduce .toast{transition:none}
-@media (prefers-reduced-motion:reduce){.grain{animation:none}.hero__scroll i{animation:none}}
+

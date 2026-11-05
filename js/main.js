@@ -11,7 +11,8 @@
 
   /* ---------- motion flag (?motion=full|reduce, jer neki browseri uvek javljaju reduce) ---------- */
   const q = new URLSearchParams(location.search).get("motion");
-  const reduce = q === "reduce" || (q !== "full" && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // Animacije su podrazumevano uključene; ?motion=reduce daje statičnu verziju (bez OS prefers-reduced-motion provere).
+  const reduce = q === "reduce";
   document.documentElement.classList.toggle("reduce", reduce);
 
   /* ---------- grain tekstura (jednom generisana) ---------- */

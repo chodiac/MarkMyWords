@@ -3,7 +3,7 @@
 Statični sajt (HTML + CSS + JS, GSAP/ScrollTrigger/Lenis sa CDN-a).
 
 **Pokretanje:** `python serve.py 5240` → http://localhost:5240
-Dev flag: `?motion=full` / `?motion=reduce` (nadjačava prefers-reduced-motion).
+Animacije su uvek uključene. `?motion=reduce` daje statičnu verziju (sav sadržaj vidljiv, bez pinova i skrol animacija).
 
 ## Šta menjaš (sve u `js/content.js`)
 - `genre`, `since`, `email`, `socials`, `intro` (tekst + stihovi), `members`, `releases` (+ linkovi, `embed`), `dates` (prazno = lepo prazno stanje), `videos` (YouTube/Vimeo/mp4 URL), `gallery`.
