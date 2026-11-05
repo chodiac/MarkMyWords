@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MARK MY WORDS! — V2</title>
+<meta name="description" content="MARK MY WORDS! — metalcore bend iz Gornjeg Milanovca. Zvanični sajt.">
+<meta name="theme-color" content="#080808">
+<link rel="icon" href="../images/web/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/v2.css">
+<link rel="preload" as="image" href="../images/web/h-main.jpg">
+</head>
+<body class="is-loading">
+<a class="skip" href="#main">Preskoči na sadržaj</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+<!-- Logo: jedan element prolazi kroz uvod (maske), hero i navigaciju bez skoka -->
+<div class="brand" id="brand" aria-hidden="true">
+  <img class="brand__full" src="../images/web/logo.svg" alt="" width="873" height="617">
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav__home" href="#top" data-nav aria-label="MARK MY WORDS! — na vrh"><span id="navSlot"></span></a>
+  <p class="nav__where mono" aria-hidden="true"><span id="whereNum">00</span> / <span id="whereName">INTRO</span></p>
+  <button class="nav__menu" id="menuBtn" aria-expanded="false" aria-controls="menu"><span class="mono">MENI</span><span class="nav__bars" aria-hidden="true"><i></i><i></i></span></button>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Glavni meni" hidden>
+  <div class="menu__ghost" aria-hidden="true">!</div>
+  <button class="menu__close" id="menuClose"><span class="mono">ZATVORI</span><span class="menu__x" aria-hidden="true"></span></button>
+  <nav class="menu__nav" aria-label="Sekcije"><ul id="menuList"></ul></nav>
+  <div class="menu__pv" id="menuPv" aria-hidden="true"></div>
+  <div class="menu__foot mono"><span id="menuMail"></span><span id="menuSocials"></span></div>
+</div>
+
+<main id="main">
+
+  <!-- OTVARANJE: hero → asimetrična kompozicija (scene A) -->
+  <section class="open" id="top" data-section="00|INTRO">
+    <div class="open__stage" id="openStage">
+      <div class="o-frame frame" id="oFrame" data-mouse>
+        <div class="o-inner inner" id="oInner"><div class="mouse"><img class="o-img" id="oImg" alt="Mark My Words! — bend iza ograde" width="2200" height="1437" fetchpriority="high"></div></div>
+        <div class="alt" aria-hidden="true"><img id="oAlt" alt="" loading="lazy"></div>
+      </div>
+      <div class="o-shade" aria-hidden="true"></div>
+      <p class="o-ghost" aria-hidden="true"><span>METAL</span><span>CORE</span></p>
+      <div class="o-copy" id="band">
+        <p class="tag mono"><b>01</b> THE BAND</p>
+        <div class="o-text" id="oText"></div>
+      </div>
+      <figure class="o-second frame" id="oSecond" data-mouse>
+        <div class="inner"><div class="mouse"><img id="oSecImg" alt="Bend ispred festivalske publike sa srpskom zastavom" loading="lazy" width="1600" height="915"></div></div>
+      </figure>
+      <div class="o-meta mono" id="oMeta">
+        <span id="heroGenre"></span>
+        <span class="o-ctas">
+          <a class="btn btn--solid" href="#music" data-nav><span>LISTEN NOW</span></a>
+          <a class="btn btn--line" href="#live" data-nav><span>LIVE DATES</span></a>
+        </span>
+      </div>
+      <a class="o-cue mono" href="#members" data-nav aria-label="Skroluj dole"><span>SKROLUJ</span><i></i></a>
+    </div>
+  </section>
+
+  <!-- ČLANOVI: krupan detalj + celi portret (scena B) -->
+  <section class="members" id="members" data-section="02|MEMBERS">
+    <header class="sec-head wrap"><p class="tag mono"><b>02</b> MEMBERS</p></header>
+    <div id="memList"></div>
+  </section>
+
+  <!-- PRELAZ: mali kadar → fullscreen → silueta logotipa (scene C + logo) -->
+  <section class="stage" id="stage" data-section="03|MUSIC">
+    <div class="st-pin" id="stPin">
+      <figure class="st-photo frame" id="stPhoto" data-mouse>
+        <div class="inner" id="stInner"><div class="mouse"><img id="stImg" alt="Bend, grupni kadar" loading="lazy" width="2400" height="1622"></div></div>
+      </figure>
+      <div class="st-shade" aria-hidden="true"></div>
+      <div class="st-copy" id="stCopy"><p class="tag mono"><b>03</b> NEXT</p><div class="st-text" id="stText"></div></div>
+      <h2 class="st-title" id="stTitle" aria-label=""></h2>
+      <svg class="st-mask" id="stMask" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="stM" maskUnits="userSpaceOnUse"><rect id="stR" fill="#fff"/><g id="stG"><g transform="translate(-188.7,-54)"><!--LOGO_MASK--></g></g></mask>
+        </defs>
+        <rect id="stO" fill="#080808" mask="url(#stM)"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="music" id="music" data-section="04|MUSIC">
+    <div class="wrap"><p class="tag mono"><b>04</b> LATEST RELEASE</p></div>
+    <div id="relList"></div>
+  </section>
+
+  <section class="live" id="live" data-section="05|LIVE">
+    <div class="wrap">
+      <p class="tag mono"><b>05</b> LIVE DATES</p>
+      <h2 class="live__title" id="liveTitle" aria-label="Live">LIVE<span class="red">!</span></h2>
+      <ul class="live__list" id="liveList"></ul>
+    </div>
+  </section>
+
+  <section class="videos" id="videos" data-section="06|VIDEO">
+    <div class="wrap"><p class="tag mono"><b>06</b> VIDEOS / LIVE ENERGY</p><div class="videos__grid" id="videoGrid"></div></div>
+  </section>
+
+  <section class="gallery" id="gallery" data-section="07|GALLERY">
+    <div class="wrap"><p class="tag mono"><b>07</b> GALLERY</p></div>
+    <div class="gal" id="galGrid"></div>
+  </section>
+
+  <section class="contact" id="contact" data-section="08|BOOKING">
+    <div class="wrap">
+      <p class="tag mono"><b>08</b> CONTACT / BOOKING</p>
+      <h2 class="contact__big"><span class="line"><span class="line__in">BOOKING</span></span><span class="line"><span class="line__in">PIŠI NAM<span class="red">!</span></span></span></h2>
+      <div class="contact__row">
+        <div>
+          <p class="mono contact__lbl">BOOKING &amp; PRESS</p>
+          <button class="contact__mail" id="mailBtn" type="button" data-cursor="KOPIRAJ"></button>
+          <p class="mono contact__hint" id="mailHint"></p>
+        </div>
+        <div>
+          <p class="mono contact__lbl">DRUŠTVENE MREŽE</p>
+          <ul class="contact__soc" id="socList"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="foot__slit" aria-hidden="true"></div>
+  <div class="foot__word" aria-hidden="true"><div class="foot__mask"><img class="foot__logo" src="../images/web/logo.svg" alt="" width="873" height="617" loading="lazy"></div></div>
+  <div class="foot__bar mono"><span>© <span id="year"></span> MARK MY WORDS!</span><a href="#top" data-nav>NA VRH ↑</a></div>
+</footer>
+
+<div class="layer" id="vModal" role="dialog" aria-modal="true" aria-label="Video" hidden>
+  <button class="layer__close" data-close aria-label="Zatvori video"><span class="mono">ZATVORI</span></button>
+  <div class="vmodal__frame" id="vFrame"></div>
+  <p class="mono vmodal__cap" id="vCap"></p>
+</div>
+<div class="layer" id="lb" role="dialog" aria-modal="true" aria-label="Galerija" hidden>
+  <button class="layer__close" data-close aria-label="Zatvori galeriju"><span class="mono">ZATVORI</span></button>
+  <button class="lb__nav lb__nav--p" id="lbPrev" aria-label="Prethodna fotografija">←</button>
+  <figure class="lb__fig" id="lbFig"></figure>
+  <button class="lb__nav lb__nav--n" id="lbNext" aria-label="Sledeća fotografija">→</button>
+  <p class="mono lb__cap" id="lbCap" aria-live="polite"></p>
+</div>
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="position:fixed;inset:auto 0 0 0;padding:16px;background:#9D151D;color:#fff;font:14px monospace;z-index:999">Za pun doživljaj potreban je JavaScript.</p></noscript>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/content.js"></script>
+<script src="js/v2.js"></script>
+</body>
+</html>

@@ -14,14 +14,14 @@ window.MMW = {
   // slug -> putanja do stvarnog fajla. Dok slug nije ovde, prikazuje se placeholder.
   // npr. "hero-1": "images/hero-1.jpg"
   imageFiles: {
-    "hero-1": "images/web/hero-1.jpg", "hero-2": "images/web/hero-2.jpg", "hero-3": "images/web/hero-3.jpg",
-    "band-main": "images/web/band-main.jpg",
-    "member-1": "images/web/member-1.jpg", "member-2": "images/web/member-2.jpg", "member-3": "images/web/member-3.jpg",
-    "member-4": "images/web/member-4.jpg", "member-5": "images/web/member-5.jpg",
-    "release-1": "images/web/release-1.jpg", "release-2": "images/web/release-2.jpg",
-    "video-1": "images/web/video-1.jpg", "video-2": "images/web/video-2.jpg",
-    "gal-1": "images/web/gal-1.jpg", "gal-2": "images/web/gal-2.jpg", "gal-3": "images/web/gal-3.jpg",
-    "gal-4": "images/web/gal-4.jpg", "gal-5": "images/web/gal-5.jpg", "gal-6": "images/web/gal-6.jpg"
+    "hero-1": "../images/web/hero-1.jpg", "hero-2": "../images/web/hero-2.jpg", "hero-3": "../images/web/hero-3.jpg",
+    "band-main": "../images/web/band-main.jpg",
+    "member-1": "../images/web/member-1.jpg", "member-2": "../images/web/member-2.jpg", "member-3": "../images/web/member-3.jpg",
+    "member-4": "../images/web/member-4.jpg", "member-5": "../images/web/member-5.jpg",
+    "release-1": "../images/web/release-1.jpg", "release-2": "../images/web/release-2.jpg",
+    "video-1": "../images/web/video-1.jpg", "video-2": "../images/web/video-2.jpg",
+    "gal-1": "../images/web/gal-1.jpg", "gal-2": "../images/web/gal-2.jpg", "gal-3": "../images/web/gal-3.jpg",
+    "gal-4": "../images/web/gal-4.jpg", "gal-5": "../images/web/gal-5.jpg", "gal-6": "../images/web/gal-6.jpg"
   },
   heroImages: ["hero-1", "hero-2", "hero-3"],
 

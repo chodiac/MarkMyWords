@@ -1,17 +1,26 @@
 # MARK MY WORDS! — sajt
 
-Statični sajt (HTML + CSS + JS, GSAP/ScrollTrigger/Lenis sa CDN-a).
+Statični sajt (HTML + CSS + JS, GSAP/ScrollTrigger/Lenis sa CDN-a). Dve potpuno odvojene verzije:
 
-**Pokretanje:** `python serve.py 5240` → http://localhost:5240
-Animacije su uvek uključene. `?motion=reduce` daje statičnu verziju (sav sadržaj vidljiv, bez pinova i skrol animacija).
+| Ruta | Šta je |
+|---|---|
+| `index.html` | izbor verzije |
+| `v1/` | **V1 — prva verzija, netaknuta** (svoj HTML/CSS/JS) |
+| `v2/` | **V2 — nova režija** (svoj HTML/CSS/JS) |
+| `images/web/` | deljene optimizovane slike i logo (`logo.svg` je vektor izvučen iz `.ai`) |
 
-## Šta menjaš (sve u `js/content.js`)
-- `genre`, `since`, `email`, `socials`, `intro` (tekst + stihovi), `members`, `releases` (+ linkovi, `embed`), `dates` (prazno = lepo prazno stanje), `videos` (YouTube/Vimeo/mp4 URL), `gallery`.
-- Fotografije: ubaci fajl u `images/`, pa u `imageFiles` dodaj `"slug": "images/slug.jpg"`. Slugovi: hero-1..3, band-main, member-1..4, release-1, gig-*, video-1..2, gal-1..6.
-- `heroVideo: "images/hero.mp4"` zamenjuje foto kadrove u hero-u.
-- Bez URL-a dugme/link se prikazuje kao zatamnjen `[LINK]` (ne radi ništa lažno).
+## Otvaranje
+```
+python serve.py 5240
+```
+- http://localhost:5240/ — izbor
+- http://localhost:5240/v1/ — V1
+- http://localhost:5240/v2/ — V2
 
-## Animacije
-Loader (brojač vezan za fontove/load) → crveni rez → paneli se razdvajaju → naslov izlazi iz maske → nav.
-Hero pin + preklapanje bandom, reči se pale po skrolu, foto se otvara "uzvičnik" rezom, članovi su pinovana sekvenca (desktop) / stack (mobilni), release rotira u kadar, live redovi iz maske + hover preview, video thumbovi iz maske, galerija sa parallaxom, kontakt na svetloj pozadini, footer wordmark.
-Sve ScrollTrigger-e žive u `gsap.matchMedia`, pa se čiste pri promeni breakpointa.
+(`serve.py` služi koren projekta, pa obe verzije rade bez dodatnog podešavanja; na GitHub Pages isto važi.)
+Git tag `v1-final` označava stanje V1 pre V2.
+
+## V2: šta menjaš
+Sve u `v2/js/content.js` (tekst benda, članovi, izdanja, nastupi, video, galerija, linkovi). Slike u `images/web/`.
+Posle izmene `v2/index.template.html` pokreni `python v2/build.py` (ubacuje SVG masku logotipa u `v2/index.html`).
+Animacije su uključene; `?motion=reduce` ili prekidač u meniju daje statičnu verziju.
