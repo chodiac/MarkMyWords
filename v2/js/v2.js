@@ -327,20 +327,20 @@
 
       /* ===== OPENING: hero → scena A ===== */
       const oFrame = $("#oFrame"), oInner = $("#oInner"), full = "inset(0px 0px 0px 0px)";
-      const fin = () => `inset(${vh() * .11}px ${vw() * .43}px ${vh() * .09}px ${vw() * .05}px)`;
+      const fin = () => `inset(${vh() * .14}px ${vw() * .39}px ${vh() * .30}px ${vw() * .05}px)`; // okvir = ceo kadar (skala .56), da se vide svi članovi
       const sp = splitLines($("#oText")); undo.push(sp.revert);
       const copyTag = $(".o-copy .tag");
       gsap.set(".o-shade", { opacity: 1 });
       if (desk) {
-        gsap.set(oFrame, { clipPath: full }); gsap.set(oInner, { x: 0, scale: 1 });
+        gsap.set(oFrame, { clipPath: full }); gsap.set(oInner, { x: 0, y: 0, scale: 1 });
         gsap.set(sp.lines, { yPercent: 115 }); gsap.set(copyTag, { opacity: 0 });
         const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: "#top", start: "top top", end: "+=270%", pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true } });
         tl.fromTo(brand, { x: () => heroBox().x, y: () => heroBox().y, scale: 1 }, { x: () => navBox().x, y: () => navBox().y, scale: () => navScale(), duration: .2, ease: "power2.inOut" }, 0)
           .to(".o-shade", { opacity: 0, duration: .25 }, .15)
           .to(".o-cue", { opacity: 0, duration: .08 }, 0)
           .fromTo(oFrame, { clipPath: full }, { clipPath: fin, duration: .36, ease: "power3.inOut" }, .12)
-          .fromTo(oInner, { x: 0, scale: 1 }, { x: () => -vw() * .19, scale: 1.06, duration: .36, ease: "power3.inOut" }, .12)
-          .fromTo(".o-ghost", { xPercent: 30, opacity: 0 }, { xPercent: -6, opacity: 1, duration: .75 }, .2)
+          .fromTo(oInner, { x: 0, y: 0, scale: 1 }, { x: () => -vw() * .17, y: () => -vh() * .08, scale: .56, duration: .36, ease: "power3.inOut" }, .12)
+          .fromTo(".o-ghost", { xPercent: 14, opacity: 0 }, { xPercent: -3, opacity: 1, duration: .75 }, .2)
           .fromTo(copyTag, { opacity: 0 }, { opacity: 1, duration: .06 }, .44)
           .fromTo(sp.lines, { yPercent: 115 }, { yPercent: 0, stagger: .028, duration: .1, ease: "power2.out" }, .46)
           .fromTo("#oSecond", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: .2, ease: "power3.inOut" }, .58)

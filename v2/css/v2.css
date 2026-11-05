@@ -87,13 +87,13 @@ html.reduce .grain{animation:none}
 /* ===== OPENING (hero + scena A) ===== */
 .open{position:relative;height:100vh;height:100svh;background:var(--ink)}
 .open__stage{position:relative;height:100%;overflow:hidden}
-.o-frame{position:absolute;inset:0;clip-path:inset(11vh 43vw 9vh 5vw);z-index:2}
-.o-inner{transform:translateX(-19vw) scale(1.06)}
+.o-frame{position:absolute;inset:0;clip-path:inset(14vh 39vw 30vh 5vw);z-index:2}
+.o-inner{transform:translate(-17vw,-8vh) scale(.56)}
 .o-shade{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,8,.55),transparent 28%,transparent 60%,rgba(8,8,8,.7));opacity:0}
-.o-ghost{position:absolute;left:28vw;top:34vh;z-index:1;font:400 clamp(120px,19vw,340px)/.8 var(--f-d);color:transparent;-webkit-text-stroke:1px rgba(232,229,223,.22);text-transform:uppercase;pointer-events:none;display:flex;flex-direction:column}
-.o-copy{position:absolute;right:5vw;top:13vh;width:36vw;z-index:4}
+.o-ghost{position:absolute;left:3vw;top:62vh;z-index:1;font:400 clamp(80px,11.5vw,220px)/.8 var(--f-d);color:transparent;-webkit-text-stroke:1px rgba(232,229,223,.24);text-transform:uppercase;pointer-events:none;white-space:nowrap}
+.o-copy{position:absolute;right:5vw;top:13vh;width:32vw;z-index:4}
 .o-text{font:400 clamp(15px,1.22vw,19px)/1.6 var(--f-b);color:rgba(232,229,223,.88)}
-.o-second{position:absolute;right:5vw;bottom:3vh;width:29vw;aspect-ratio:4/3;z-index:4}
+.o-second{position:absolute;right:5vw;bottom:3vh;width:27vw;aspect-ratio:4/3;z-index:4}
 .o-meta{position:absolute;left:5vw;bottom:2.4vh;width:52vw;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:5}
 .o-meta #heroGenre{color:var(--bone)}
 .o-ctas{display:flex;gap:10px}
