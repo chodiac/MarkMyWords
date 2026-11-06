@@ -143,6 +143,20 @@
     },
     fade: { in: el => gsap.fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, duration: D(.35) }), out: el => gsap.to(el, { autoAlpha: 0, duration: D(.25) }) }
   };
+  /* meni: veliki logo iz hero-a leti u poziciju navigacije dok je meni otvoren, pa se vraća */
+  let brandSaved = null;
+  function brandToNav() {
+    if (reduce) return;
+    const n = navBox(), h = heroBox(), s = { x: gsap.getProperty(brand, "x"), y: gsap.getProperty(brand, "y"), scale: gsap.getProperty(brand, "scale") };
+    if (Math.abs(s.x - n.x) < 1 && Math.abs(s.y - n.y) < 1) { brandSaved = null; return; }
+    brandSaved = s;
+    gsap.to(brand, { x: n.x, y: n.y, scale: n.w / h.w, duration: .8, ease: "power3.inOut", overwrite: false });
+  }
+  function brandRestore() {
+    if (!brandSaved) return;
+    const s = brandSaved; brandSaved = null;
+    gsap.to(brand, { ...s, duration: .8, ease: "power3.inOut", overwrite: false });
+  }
   function openLayer(el, from, kind = "fade") {
     if (layer) return;
     layer = { el, kind }; opener = from || document.activeElement;
@@ -155,7 +169,7 @@
     first.focus({ preventScroll: true });
     setTimeout(() => { if (layer && layer.el === el && !el.contains(document.activeElement)) first.focus({ preventScroll: true }); }, 80);
     document.addEventListener("keydown", onKey, true);
-    if (el.id === "menu") { $("#menuBtn").setAttribute("aria-expanded", "true"); markActiveMenu(); }
+    if (el.id === "menu") { $("#menuBtn").setAttribute("aria-expanded", "true"); markActiveMenu(); brandToNav(); }
   }
   function closeLayer(after) {
     if (!layer) return;
@@ -165,7 +179,7 @@
     setInert(false);
     document.body.classList.remove("is-locked");
     if (lenis) lenis.start();
-    if (el.id === "menu") $("#menuBtn").setAttribute("aria-expanded", "false");
+    if (el.id === "menu") { $("#menuBtn").setAttribute("aria-expanded", "false"); brandRestore(); }
     const o = opener; opener = null;
     if (after) after(); else if (o && document.contains(o)) o.focus({ preventScroll: true });
   }
