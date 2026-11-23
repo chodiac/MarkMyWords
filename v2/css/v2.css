@@ -168,7 +168,7 @@ html.reduce .grain{animation:none}
 .live__list{border-top:1px solid var(--g3)}
 .row{position:relative;border-bottom:1px solid var(--g3);overflow:hidden}
 .row::before{content:"";position:absolute;inset:0;background:var(--red);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--ease)}
-.row__in{position:relative;display:grid;grid-template-columns:minmax(120px,.7fr) 2.2fr 1.5fr 1fr 86px;align-items:center;gap:20px;padding:clamp(16px,2vw,28px) 0;transition:transform .5s var(--ease)}
+.row__in{position:relative;display:grid;grid-template-columns:minmax(120px,.7fr) 2.2fr 1.5fr 1fr 86px;align-items:center;gap:20px;padding:clamp(20px,2.4vw,34px) clamp(16px,2.2vw,36px);transition:transform .5s var(--ease)}
 .row__city{font:400 clamp(34px,5.6vw,96px)/.95 var(--f-d);text-transform:uppercase}
 .row__venue{color:rgba(232,229,223,.7)}
 @media (hover:hover){.row:hover::before{transform:none}.row:hover .row__in{transform:translateX(clamp(8px,1.2vw,22px))}}
