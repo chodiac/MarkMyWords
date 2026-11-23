@@ -29,8 +29,8 @@
   const frame = (src, alt = "", cls = "", extra = "", fx = "50%", fy = "50%", fs = 1) =>
     `<div class="frame ${cls}" ${extra}><div class="inner"><div class="mouse"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" style="--fx:${fx};--fy:${fy};--fs:${fs}"></div></div></div>`;
   const VARS = ["a", "b", "c", "d", "e"];
-  const SECTIONS = [["top", "THE BAND", "hero"], ["members", "MEMBERS", "mp3"], ["music", "MUSIC", "rel-1"], ["live", "LIVE DATES", "g8"], ["videos", "VIDEOS", "vid-1"], ["gallery", "GALLERY", "g4"], ["contact", "BOOKING", "g2"]];
-  const PV = { hero: C.img.hero, mp3: C.members[2].port, "rel-1": C.img["rel-1"], g8: C.gallery[9].src, "vid-1": C.img["vid-1"], g4: C.gallery[4].src, g2: C.gallery[5].src };
+  const SECTIONS = [["top", "THE BAND", "hero"], ["members", "MEMBERS", "mp3"], ["music", "MUSIC", "rel-1"], ["merch", "MERCH", "merch-2"], ["live", "TOUR DATES", "g8"], ["videos", "VIDEOS", "vid-1"], ["gallery", "GALLERY", "g4"], ["contact", "BOOKING", "g2"]];
+  const PV = { hero: C.img.hero, mp3: C.members[2].port, "rel-1": C.img["rel-1"], "merch-2": C.img["merch-2"], g8: C.gallery[9].src, "vid-1": C.img["vid-1"], g4: C.gallery[4].src, g2: C.gallery[5].src };
 
   function render() {
     $("#heroGenre").textContent = C.genre;
@@ -71,8 +71,24 @@
     if (!C.dates.length) {
       L.outerHTML = `<div class="live__empty" id="liveList"><p class="big" aria-hidden="true">!</p><div><h3>NEMA POTVRĐENIH NASTUPA</h3><p>Novi datumi stižu uskoro. Prati nas ili piši za booking.</p><a class="btn btn--solid" href="#contact" data-nav><span>BOOKING</span></a></div></div>`;
     } else {
-      L.innerHTML = C.dates.map(d => { const [y, m, dd] = d.date.split("-"); return `<li class="row"><div class="row__in"><p class="row__date mono"><b>${dd} / ${m}</b> · ${y}</p><h3 class="row__city">${esc(d.city)}</h3><p class="row__venue mono">${esc(d.venue)}</p><div class="row__tix">${d.tickets ? `<a class="btn btn--line" href="${esc(d.tickets)}" target="_blank" rel="noopener" aria-label="Karte: ${esc(d.city)}, ${esc(d.venue)}"><span>TICKETS ↗</span></a>` : `<span class="mono">TBA</span>`}</div></div></li>`; }).join("");
+      L.innerHTML = C.dates.map((d, i) => {
+        const [y, m, dd] = d.date.split("-");
+        const poster = d.poster ? `<button class="row__poster has-img" type="button" data-poster="${i}" data-cursor="POSTER" aria-label="Poster: ${esc(d.city)}"><img src="${esc(d.poster)}" alt="" loading="lazy"></button>` : `<div class="row__poster" aria-hidden="true"><span class="mono">POSTER<br>USKORO</span></div>`;
+        return `<li class="row"><div class="row__in"><p class="row__date mono"><b>${dd} / ${m}</b> · ${y}</p><h3 class="row__city">${esc(d.city)}</h3><p class="row__venue mono">${d.venue ? esc(d.venue) : "PROSTOR · USKORO"}</p><div class="row__tix">${d.tickets ? `<a class="btn btn--line" href="${esc(d.tickets)}" target="_blank" rel="noopener" aria-label="Karte: ${esc(d.city)}"><span>TICKETS ↗</span></a>` : `<span class="mono row__status">ULAZ · INFO USKORO</span>`}</div>${poster}</div></li>`;
+      }).join("");
     }
+
+    $("#merchIntro").textContent = C.merchIntro;
+    $("#merchGrid").innerHTML = C.merch.map((m, i) => `
+      <article class="mi mi--${i % 2 ? "b" : "a"}" data-i="${i}">
+        <div class="frame frame--color mi__img" data-mouse><div class="inner"><div class="mouse"><img src="${esc(C.img[m.img])}" alt="${esc(m.alt)}" loading="lazy" decoding="async"></div></div></div>
+        <div class="mi__info">
+          <p class="mono mi__tag">${pad2(i + 1)} / ${pad2(C.merch.length)}</p>
+          <h3 class="mi__name" aria-label="${esc(m.name + " " + m.variant)}"><span aria-hidden="true">${esc(m.name)}</span><span aria-hidden="true" class="mi__var">${esc(m.variant)}</span></h3>
+          <p class="mono mi__meta">${esc(m.price)} · ${esc(m.sizes)}</p>
+          <button class="btn btn--solid" type="button" data-order="${i}"><span>PORUČI NA UPIT</span></button>
+        </div>
+      </article>`).join("");
 
     $("#videoGrid").innerHTML = C.videos.map((v, i) => `
       <button class="vid" type="button" data-i="${i}" data-cursor="PLAY" aria-label="Pusti video: ${esc(v.title)}">
@@ -208,7 +224,7 @@
   }
   function markActiveMenu() {
     const cur = $("#whereNum").textContent; // 00..
-    const map = { "00": 0, "01": 0, "02": 1, "03": 2, "04": 2, "05": 3, "06": 4, "07": 5, "08": 6 };
+    const map = { "00": 0, "01": 0, "02": 1, "03": 2, "04": 2, "05": 3, "06": 4, "07": 5, "08": 6, "09": 7 };
     const i = map[cur] ?? 0; $$("#menuList a").forEach((a, k) => a.classList.toggle("is-act", k === i)); pvIdx = -1; showPv(i);
   }
   $("#menuList").addEventListener("mouseover", e => { const a = e.target.closest("a"); if (a) showPv(+a.dataset.pv); });
@@ -242,15 +258,22 @@
   vModal.addEventListener("click", e => { if (e.target === vModal) closeLayer(); });
 
   /* lightbox */
-  const lb = $("#lb"); let lbI = 0;
+  const lb = $("#lb"); let lbI = 0, lbItems = C.gallery;
   function lbShow(i, dir = 0) {
-    lbI = (i + C.gallery.length) % C.gallery.length; const g = C.gallery[lbI];
+    lbI = (i + lbItems.length) % lbItems.length; const g = lbItems[lbI];
     $("#lbFig").innerHTML = `<img src="${esc(g.src)}" alt="${esc(g.alt)}">`;
-    $("#lbCap").textContent = `${pad2(lbI + 1)} / ${pad2(C.gallery.length)} — ${g.alt}`;
+    $("#lbCap").textContent = `${pad2(lbI + 1)} / ${pad2(lbItems.length)} — ${g.alt}`;
+    $("#lbPrev").hidden = $("#lbNext").hidden = lbItems.length < 2;
     if (!reduce) gsap.fromTo("#lbFig", { opacity: 0, x: dir * 40 }, { opacity: 1, x: 0, duration: .5, ease: "mmw" });
   }
   const lbStep = d => lbShow(lbI + d, d);
-  $("#galGrid").addEventListener("click", e => { const b = e.target.closest(".gi"); if (!b) return; lbShow(+b.dataset.i); openLayer(lb, b); });
+  $("#galGrid").addEventListener("click", e => { const b = e.target.closest(".gi"); if (!b) return; lbItems = C.gallery; lbShow(+b.dataset.i); openLayer(lb, b); });
+  $("#liveList").addEventListener("click", e => { const b = e.target.closest("[data-poster]"); if (!b) return; const d = C.dates[+b.dataset.poster]; lbItems = [{ src: d.poster, alt: "Poster — " + d.city }]; lbShow(0); openLayer(lb, b); });
+  $("#merchGrid").addEventListener("click", e => {
+    const b = e.target.closest("[data-order]"); if (!b) return; const m = C.merch[+b.dataset.order], name = `${m.name} ${m.variant}`;
+    if (isPh(C.email)) return toast("EMAIL JE PLACEHOLDER — UNESI GA U v2/js/content.js (porudžbina ide mejlom)");
+    location.href = `mailto:${C.email}?subject=${encodeURIComponent("Porudžbina: " + name)}&body=${encodeURIComponent("Zdravo, želim da poručim: " + name + "\nVeličina:\nKoličina:\nIme i prezime:\nAdresa za isporuku:\nTelefon:\n")}`;
+  });
   $("#lbPrev").addEventListener("click", () => lbStep(-1)); $("#lbNext").addEventListener("click", () => lbStep(1));
   lb.querySelector("[data-close]").addEventListener("click", () => closeLayer());
   lb.addEventListener("click", e => { if (e.target === lb) closeLayer(); });
@@ -449,6 +472,17 @@
         gsap.to(names, { yPercent: 0, stagger: .1, duration: 1.1, ease: "mmw", scrollTrigger: { trigger: r, start: "top 60%", toggleActions: "play none none reverse" } });
         gsap.fromTo($(".rel__info", r).children, { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: .08, duration: .9, ease: "mmw", scrollTrigger: { trigger: r, start: "top 55%", toggleActions: "play none none reverse" } });
         if (desk) gsap.fromTo(art, { y: 50 }, { y: -50, ease: "none", scrollTrigger: { trigger: r, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+
+      /* ===== MERCH ===== */
+      gsap.from(".merch__title .line__in", { yPercent: 140, duration: 1.1, ease: "mmw", scrollTrigger: { trigger: ".merch__head", start: "top 85%", toggleActions: "play none none reverse" } });
+      gsap.from(".merch__intro", { y: 24, opacity: 0, duration: .9, ease: "mmw", scrollTrigger: { trigger: ".merch__head", start: "top 80%", toggleActions: "play none none reverse" } });
+      $$(".mi").forEach((m, i) => {
+        const f = $(".mi__img", m);
+        gsap.fromTo(f, { clipPath: i ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: m, start: "top 82%", toggleActions: "play none none reverse" } });
+        gsap.fromTo($(".inner", f), { scale: 1.2 }, { scale: 1, ease: "none", scrollTrigger: { trigger: m, start: "top bottom", end: "top 15%", scrub: true } });
+        gsap.fromTo($(".mi__info", m).children, { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: .08, duration: .9, ease: "mmw", scrollTrigger: { trigger: m, start: "top 55%", toggleActions: "play none none reverse" } });
+        if (desk) gsap.fromTo(m, { y: i ? 50 : -30 }, { y: i ? -50 : 30, ease: "none", scrollTrigger: { trigger: m, start: "top bottom", end: "bottom top", scrub: true } });
       });
 
       /* ===== LIVE / VIDEOS ===== */

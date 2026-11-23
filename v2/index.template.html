@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/v2.css?v=4">
+<link rel="stylesheet" href="css/v2.css?v=5">
 <link rel="preload" as="image" href="../images/web/h-main.jpg">
 </head>
 <body class="is-loading">
@@ -58,8 +58,8 @@
       <div class="o-meta mono" id="oMeta">
         <span id="heroGenre"></span>
         <span class="o-ctas">
-          <a class="btn btn--solid" href="#music" data-nav><span>LISTEN NOW</span></a>
-          <a class="btn btn--line" href="#live" data-nav><span>LIVE DATES</span></a>
+          <a class="btn btn--solid" href="#merch" data-nav><span>MERCH</span></a>
+          <a class="btn btn--line" href="#live" data-nav><span>TOUR DATES</span></a>
         </span>
       </div>
       <a class="o-cue mono" href="#members" data-nav aria-label="Skroluj dole"><span>SKROLUJ</span><i></i></a>
@@ -95,26 +95,37 @@
     <div id="relList"></div>
   </section>
 
-  <section class="live" id="live" data-section="05|LIVE">
+  <section class="merch" id="merch" data-section="05|MERCH">
     <div class="wrap">
-      <p class="tag mono"><b>05</b> LIVE DATES</p>
-      <h2 class="live__title" id="liveTitle" aria-label="Live">LIVE<span class="red">!</span></h2>
+      <p class="tag mono"><b>05</b> MERCH</p>
+      <div class="merch__head">
+        <h2 class="merch__title" aria-label="Merch"><span class="line"><span class="line__in">MERCH</span></span></h2>
+        <p class="merch__intro" id="merchIntro"></p>
+      </div>
+      <div class="merch__grid" id="merchGrid"></div>
+    </div>
+  </section>
+
+  <section class="live" id="live" data-section="06|TOUR">
+    <div class="wrap">
+      <p class="tag mono"><b>06</b> TOUR DATES</p>
+      <h2 class="live__title" id="liveTitle" aria-label="Tour">TOUR<span class="red">!</span></h2>
       <ul class="live__list" id="liveList"></ul>
     </div>
   </section>
 
-  <section class="videos" id="videos" data-section="06|VIDEO">
-    <div class="wrap"><p class="tag mono"><b>06</b> VIDEOS / LIVE ENERGY</p><div class="videos__grid" id="videoGrid"></div></div>
+  <section class="videos" id="videos" data-section="07|VIDEO">
+    <div class="wrap"><p class="tag mono"><b>07</b> VIDEOS / LIVE ENERGY</p><div class="videos__grid" id="videoGrid"></div></div>
   </section>
 
-  <section class="gallery" id="gallery" data-section="07|GALLERY">
-    <div class="wrap"><p class="tag mono"><b>07</b> GALLERY</p></div>
+  <section class="gallery" id="gallery" data-section="08|GALLERY">
+    <div class="wrap"><p class="tag mono"><b>08</b> GALLERY</p></div>
     <div class="gal" id="galGrid"></div>
   </section>
 
-  <section class="contact" id="contact" data-section="08|BOOKING">
+  <section class="contact" id="contact" data-section="09|BOOKING">
     <div class="wrap">
-      <p class="tag mono"><b>08</b> CONTACT / BOOKING</p>
+      <p class="tag mono"><b>09</b> CONTACT / BOOKING</p>
       <h2 class="contact__big"><span class="line"><span class="line__in">BOOKING</span></span><span class="line"><span class="line__in">PIŠI NAM<span class="red">!</span></span></span></h2>
       <div class="contact__row">
         <div>
@@ -156,7 +167,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/content.js?v=4"></script>
-<script src="js/v2.js?v=4"></script>
+<script src="js/content.js?v=5"></script>
+<script src="js/v2.js?v=5"></script>
 </body>
 </html>

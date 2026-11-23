@@ -19,7 +19,8 @@ window.MMW = {
   img: {
     hero: IMG + "h-main.jpg", heroAlt: IMG + "g-7.jpg", second: IMG + "a-second.jpg", stage: IMG + "stage.jpg",
     "rel-1": IMG + "release-1.jpg", "rel-2": IMG + "release-2.jpg",
-    "vid-1": IMG + "video-1.jpg", "vid-2": IMG + "video-2.jpg"
+    "vid-1": IMG + "video-1.jpg", "vid-2": IMG + "video-2.jpg",
+    "merch-1": IMG + "merch-1.jpg", "merch-2": IMG + "merch-2.jpg"
   },
 
   // fx/fy = tačka fokusa lica (%) za veliki kadar; fs = uvećanje krupnog kadra
@@ -37,8 +38,21 @@ window.MMW = {
     { title: "NOCTURNAL LIGHTS", type: "EP", year: "[GODINA]", img: "rel-2", note: "", links: [{ label: "SPOTIFY", url: "" }, { label: "YOUTUBE", url: "" }, { label: "BANDCAMP", url: "" }] }
   ],
 
+  // MERCH: prodaja na upit (porudžbina ide mejlom). Cena/veličine: upiši kad budu poznati.
+  merchIntro: "Za sada dve majice. Prodaja ide na upit: pošalji nam poruku, a mi javljamo cenu, veličine i način isporuke.",
+  merch: [
+    { name: "MAJICA", variant: "BEŽ", img: "merch-1", alt: "Majica, bež, leđa sa vitraž motivom i logoom Mark My Words", price: "CENA: NA UPIT", sizes: "VELIČINE: NA UPIT" },
+    { name: "MAJICA", variant: "BORDO", img: "merch-2", alt: "Majica, bordo, leđa sa vitraž motivom i logoom Mark My Words", price: "CENA: NA UPIT", sizes: "VELIČINE: NA UPIT" }
+  ],
+
+  // TOUR DATES. Prodaje karata za sada nema (tickets prazno). poster: putanja slike postera (npr. IMG + "poster-krusevac.jpg");
+  // dok je prazno prikazuje se rezervisano mesto. venue: upiši prostor kad bude poznat.
   // Prazno = prazno stanje. { date:"2026-12-05", city:"BEOGRAD", venue:"KC GRAD", tickets:"https://..." }
-  dates: [],
+  dates: [
+    { date: "2026-12-18", city: "KRUŠEVAC", venue: "", tickets: "", poster: "" },
+    { date: "2026-12-26", city: "ARANĐELOVAC", venue: "", tickets: "", poster: "" },
+    { date: "2027-02-06", city: "UŽICE", venue: "", tickets: "", poster: "" }
+  ],
 
   videos: [
     { title: "[LIVE VIDEO 1]", tag: "LIVE", img: "vid-1", url: "" },
