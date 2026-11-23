@@ -49,7 +49,7 @@ window.MMW = {
   // dok je prazno prikazuje se rezervisano mesto. venue: upiši prostor kad bude poznat.
   // Prazno = prazno stanje. { date:"2026-12-05", city:"BEOGRAD", venue:"KC GRAD", tickets:"https://..." }
   dates: [
-    { date: "2026-12-18", city: "KRUŠEVAC", venue: "", tickets: "", poster: "" },
+    { date: "2026-12-18", city: "KRUŠEVAC", venue: "PIRANHA · BIRČANINOVA 6", info: "POČETAK 21H · ULAZNICA 500 RSD · REZERVACIJE 0666999111", tickets: "", poster: IMG + "poster-krusevac.jpg" },
     { date: "2026-12-26", city: "ARANĐELOVAC", venue: "", tickets: "", poster: "" },
     { date: "2027-02-06", city: "UŽICE", venue: "", tickets: "", poster: "" }
   ],

@@ -168,14 +168,14 @@ html.reduce .grain{animation:none}
 .live__list{border-top:1px solid var(--g3)}
 .row{position:relative;border-bottom:1px solid var(--g3);overflow:hidden}
 .row::before{content:"";position:absolute;inset:0;background:var(--red);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--ease)}
-.row__in{position:relative;display:grid;grid-template-columns:minmax(120px,.7fr) 2.2fr 1.5fr 1fr 86px;align-items:center;gap:20px;padding:clamp(20px,2.4vw,34px) clamp(16px,2.2vw,36px);transition:transform .5s var(--ease)}
+.row__in{position:relative;display:grid;grid-template-columns:minmax(120px,.7fr) 2.2fr 1.5fr 1.2fr 76px;align-items:center;gap:20px;padding:clamp(20px,2.4vw,34px) clamp(16px,2.2vw,36px);transition:transform .5s var(--ease)}
 .row__city{font:400 clamp(34px,5.6vw,96px)/.95 var(--f-d);text-transform:uppercase}
 .row__venue{color:rgba(232,229,223,.7)}
 @media (hover:hover){.row:hover::before{transform:none}.row:hover .row__in{transform:translateX(clamp(8px,1.2vw,22px))}}
 .row__status{color:rgba(232,229,223,.7)}
-.row__poster{width:86px;aspect-ratio:3/4;display:grid;place-items:center;text-align:center;color:var(--g4);border:1px dashed var(--g4);position:relative;overflow:hidden;justify-self:end}
+.row__poster{width:76px;aspect-ratio:9/16;display:grid;place-items:center;text-align:center;color:var(--g4);border:1px dashed var(--g4);position:relative;overflow:hidden;justify-self:end}
 .row__poster span{font-size:9px}
-.row__poster.has-img{border:0;padding:0}.row__poster img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);transition:transform .6s var(--ease)}
+.row__poster.has-img{border:0;padding:0}.row__poster img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .row__poster.has-img:hover img{transform:scale(1.06)}
 .live__empty{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,64px);align-items:center;padding:clamp(40px,6vw,90px) 0;border-bottom:1px solid var(--g3)}
 .live__empty .big{font:400 clamp(120px,20vw,320px)/.7 var(--f-d);color:var(--red)}
@@ -263,6 +263,7 @@ html.reduce .grain{animation:none}
 .vmodal__cap,.lb__cap{position:absolute;left:var(--pad);bottom:calc(var(--pad)*.8);color:var(--g4)}
 .lb__fig{width:min(1200px,100%);height:100%;max-height:calc(100vh - 140px);position:relative}
 .lb__fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:grayscale(1) contrast(1.12)}
+.lb__fig img.is-color{filter:none}
 .lb__nav{position:absolute;top:50%;width:56px;height:56px;margin-top:-28px;font:400 28px var(--f-d);border:1px solid var(--g3);z-index:3;transition:background .3s,color .3s}
 .lb__nav:hover{background:var(--bone);color:var(--ink)}
 .lb__nav--p{left:var(--pad)}.lb__nav--n{right:var(--pad)}

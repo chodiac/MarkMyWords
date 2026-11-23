@@ -74,7 +74,7 @@
       L.innerHTML = C.dates.map((d, i) => {
         const [y, m, dd] = d.date.split("-");
         const poster = d.poster ? `<button class="row__poster has-img" type="button" data-poster="${i}" data-cursor="POSTER" aria-label="Poster: ${esc(d.city)}"><img src="${esc(d.poster)}" alt="" loading="lazy"></button>` : `<div class="row__poster" aria-hidden="true"><span class="mono">POSTER<br>USKORO</span></div>`;
-        return `<li class="row"><div class="row__in"><p class="row__date mono"><b>${dd} / ${m}</b> · ${y}</p><h3 class="row__city">${esc(d.city)}</h3><p class="row__venue mono">${d.venue ? esc(d.venue) : "PROSTOR · USKORO"}</p><div class="row__tix">${d.tickets ? `<a class="btn btn--line" href="${esc(d.tickets)}" target="_blank" rel="noopener" aria-label="Karte: ${esc(d.city)}"><span>TICKETS ↗</span></a>` : `<span class="mono row__status">ULAZ · INFO USKORO</span>`}</div>${poster}</div></li>`;
+        return `<li class="row"><div class="row__in"><p class="row__date mono"><b>${dd} / ${m}</b> · ${y}</p><h3 class="row__city">${esc(d.city)}</h3><p class="row__venue mono">${d.venue ? esc(d.venue) : "PROSTOR · USKORO"}</p><div class="row__tix">${d.tickets ? `<a class="btn btn--line" href="${esc(d.tickets)}" target="_blank" rel="noopener" aria-label="Karte: ${esc(d.city)}"><span>TICKETS ↗</span></a>` : `<span class="mono row__status">${d.info ? esc(d.info) : "ULAZ · INFO USKORO"}</span>`}</div>${poster}</div></li>`;
       }).join("");
     }
 
@@ -261,14 +261,14 @@
   const lb = $("#lb"); let lbI = 0, lbItems = C.gallery;
   function lbShow(i, dir = 0) {
     lbI = (i + lbItems.length) % lbItems.length; const g = lbItems[lbI];
-    $("#lbFig").innerHTML = `<img src="${esc(g.src)}" alt="${esc(g.alt)}">`;
+    $("#lbFig").innerHTML = `<img src="${esc(g.src)}" alt="${esc(g.alt)}" ${g.color ? 'class="is-color"' : ""}>`;
     $("#lbCap").textContent = `${pad2(lbI + 1)} / ${pad2(lbItems.length)} — ${g.alt}`;
     $("#lbPrev").hidden = $("#lbNext").hidden = lbItems.length < 2;
     if (!reduce) gsap.fromTo("#lbFig", { opacity: 0, x: dir * 40 }, { opacity: 1, x: 0, duration: .5, ease: "mmw" });
   }
   const lbStep = d => lbShow(lbI + d, d);
   $("#galGrid").addEventListener("click", e => { const b = e.target.closest(".gi"); if (!b) return; lbItems = C.gallery; lbShow(+b.dataset.i); openLayer(lb, b); });
-  $("#liveList").addEventListener("click", e => { const b = e.target.closest("[data-poster]"); if (!b) return; const d = C.dates[+b.dataset.poster]; lbItems = [{ src: d.poster, alt: "Poster — " + d.city }]; lbShow(0); openLayer(lb, b); });
+  $("#liveList").addEventListener("click", e => { const b = e.target.closest("[data-poster]"); if (!b) return; const d = C.dates[+b.dataset.poster]; lbItems = [{ src: d.poster, alt: "Poster — " + d.city, color: true }]; lbShow(0); openLayer(lb, b); });
   $("#merchGrid").addEventListener("click", e => {
     const b = e.target.closest("[data-order]"); if (!b) return; const m = C.merch[+b.dataset.order], name = `${m.name} ${m.variant}`;
     if (isPh(C.email)) return toast("EMAIL JE PLACEHOLDER — UNESI GA U v2/js/content.js (porudžbina ide mejlom)");
