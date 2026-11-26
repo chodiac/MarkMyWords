@@ -34,8 +34,8 @@ window.MMW = {
 
   // Artwork je privremena fotografija dok ne stigne pravi cover.
   releases: [
-    { title: "FADING", type: "SINGL", year: "2026", img: "rel-1", note: "Leto 2026.", links: [{ label: "SPOTIFY", url: "" }, { label: "YOUTUBE", url: "" }, { label: "BANDCAMP", url: "" }] },
-    { title: "NOCTURNAL LIGHTS", type: "EP", year: "[GODINA]", img: "rel-2", note: "", links: [{ label: "SPOTIFY", url: "" }, { label: "YOUTUBE", url: "" }, { label: "BANDCAMP", url: "" }] }
+    { title: "FADING", type: "SINGL", year: "2026", img: "rel-1", note: "Leto 2026.", links: [{ label: "SPOTIFY", url: "https://open.spotify.com/artist/05jvFA2wFfkqi4lkKDJ2Qd" }, { label: "YOUTUBE", url: "https://www.youtube.com/@markmywords9222" }] },
+    { title: "NOCTURNAL LIGHTS", type: "EP", year: "[GODINA]", img: "rel-2", note: "", links: [{ label: "SPOTIFY", url: "https://open.spotify.com/artist/05jvFA2wFfkqi4lkKDJ2Qd" }, { label: "YOUTUBE", url: "https://www.youtube.com/@markmywords9222" }] }
   ],
 
   // MERCH: prodaja na upit (porudžbina ide mejlom). Cena/veličine: upiši kad budu poznati.
@@ -74,6 +74,9 @@ window.MMW = {
   ],
 
   socials: [
-    { label: "INSTAGRAM", url: "" }, { label: "FACEBOOK", url: "" }, { label: "YOUTUBE", url: "" }, { label: "SPOTIFY", url: "" }
+    { label: "INSTAGRAM", url: "https://www.instagram.com/markmywordsband/" },
+    { label: "FACEBOOK", url: "https://www.facebook.com/markmywordsofficial" },
+    { label: "YOUTUBE", url: "https://www.youtube.com/@markmywords9222" },
+    { label: "SPOTIFY", url: "https://open.spotify.com/artist/05jvFA2wFfkqi4lkKDJ2Qd" }
   ]
 };
