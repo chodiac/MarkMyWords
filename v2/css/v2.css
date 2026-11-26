@@ -173,7 +173,7 @@ html.reduce .grain{animation:none}
 .row__venue{color:rgba(232,229,223,.7)}
 @media (hover:hover){.row:hover::before{transform:none}.row:hover .row__in{transform:translateX(clamp(8px,1.2vw,22px))}}
 .row__status{color:rgba(232,229,223,.7)}
-.row__poster{width:76px;aspect-ratio:9/16;display:grid;place-items:center;text-align:center;color:var(--g4);border:1px dashed var(--g4);position:relative;overflow:hidden;justify-self:end}
+.row__poster{width:80px;aspect-ratio:2/3;display:grid;place-items:center;text-align:center;color:var(--g4);border:1px dashed var(--g4);position:relative;overflow:hidden;justify-self:end}
 .row__poster span{font-size:9px}
 .row__poster.has-img{border:0;padding:0}.row__poster img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .row__poster.has-img:hover img{transform:scale(1.06)}
